@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Charles Ji - software engineer portfolio and resume website."
+    />
+    <title>Charles Zone</title>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="loader" data-loader>
+      <p class="loader__percent" data-loader-percent>0%</p>
+      <p class="loader__status" data-loader-status>Initializing profile...</p>
+    </div>
+    <script>
+      (() => {
+        const loader = document.querySelector("[data-loader]");
+        const percent = document.querySelector("[data-loader-percent]");
+        const status = document.querySelector("[data-loader-status]");
+        const statuses = [
+          "Initializing profile...",
+          "Mapping product instincts...",
+          "Loading AI projects...",
+          "Ready for launch."
+        ];
+
+        let progress = 0;
+        const finish = () => {
+          percent.textContent = "100%";
+          status.textContent = statuses[3];
+          window.setTimeout(() => loader.classList.add("is-hidden"), 260);
+        };
+        const timer = window.setInterval(() => {
+          progress = Math.min(100, progress + Math.ceil(Math.random() * 11));
+          percent.textContent = `${progress}%`;
+          status.textContent = statuses[Math.min(statuses.length - 1, Math.floor(progress / 30))];
+          if (progress >= 100) {
+            window.clearInterval(timer);
+            finish();
+          }
+        }, 80);
+
+        window.setTimeout(() => {
+          window.clearInterval(timer);
+          finish();
+        }, 2200);
+      })();
+    </script>
+
+    <canvas class="constellation" data-constellation aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Charles Ji home">
+        <img src="assets/logo.png" alt="" />
+      </a>
+      <a class="brand-name" href="#home">Charles <span>Zone</span></a>
+      <nav class="nav" aria-label="Primary">
+        <span class="nav__liquid" aria-hidden="true"></span>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero__copy">
+          <p class="eyebrow">Portfolio / Resume</p>
+          <h1>Charles Ji</h1>
+          <h2><span data-typewriter>AI Product Manager</span><span class="caret">█</span></h2>
+          <p>
+            I build thoughtful software systems, clean interfaces, and reliable
+            automation. This site is ready for your real resume details, projects,
+            links, and downloadable CV.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#projects">View work</a>
+            <a class="button button--ghost" href="#contact">Contact</a>
+          </div>
+        </div>
+        <figure class="hero__visual">
+          <img src="assets/charles-visual.png" alt="Abstract digital portrait visual" />
+        </figure>
+      </section>
+
+      <section class="section section--split" id="about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>About Me</h2>
+        </div>
+        <div class="glass-panel">
+          <p>
+            Hi, I'm Charles Ji. I enjoy turning ambiguous ideas into practical
+            products, with a focus on full-stack engineering, data-driven tools,
+            and polished user experiences.
+          </p>
+          <p>
+            Replace this paragraph with your strongest personal summary: your
+            current role, technical focus, years of experience, location, and what
+            opportunities you want people to contact you about.
+          </p>
+          <div class="link-row" aria-label="Profile links">
+            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a href="#" aria-disabled="true">Resume</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <p class="eyebrow">Experience</p>
+        <h2>Selected Work</h2>
+        <p class="section__subtitle">Every step is part of the product journey.</p>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-item__node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3>AI Product Manager</h3>
+                  <p class="timeline-card__org">
+                    <span class="org-mark">CJ</span>
+                    Company Name | City, Country
+                  </p>
+                </div>
+                <span class="timeline-card__date">2024 - Present</span>
+              </div>
+              <ul>
+                <li>Define AI product strategy, roadmap priorities, and release plans.</li>
+                <li>Translate user needs into practical workflows, prototypes, and launch specs.</li>
+                <li>Coordinate design, engineering, and stakeholders across the product lifecycle.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item reveal">
+            <div class="timeline-item__node" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-card__header">
+                <div>
+                  <h3>Architecture / Product Design</h3>
+                  <p class="timeline-card__org">
+                    <span class="org-mark">SC</span>
+                    Organization Name | Remote
+                  </p>
+                </div>
+                <span class="timeline-card__date">2020 - 2024</span>
+              </div>
+              <ul>
+                <li>Built strong spatial thinking, system design, and user experience judgment.</li>
+                <li>Created product concepts, visual prototypes, and structured requirement documents.</li>
+                <li>Developed cross-disciplinary problem-solving skills for complex product decisions.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section__heading-row">
+          <div>
+            <p class="eyebrow">Projects</p>
+            <h2>Things I've Built</h2>
+          </div>
+          <div class="filter-bar" aria-label="Project filters">
+            <button class="is-active" type="button" data-filter="all">All</button>
+            <button type="button" data-filter="web">Web</button>
+            <button type="button" data-filter="data">Data</button>
+            <button type="button" data-filter="ai">AI</button>
+          </div>
+        </div>
+        <div class="project-grid">
+          <article class="project-card" data-category="web">
+            <p>Web</p>
+            <h3>Personal Resume Site</h3>
+            <span>
+              A dark, interactive portfolio inspired by modern engineer websites,
+              rebuilt for Charles Ji with editable resume sections.
+            </span>
+          </article>
+          <article class="project-card" data-category="data">
+            <p>Data</p>
+            <h3>Analytics Dashboard</h3>
+            <span>
+              Dashboard template for tracking metrics, trends, and operational
+              signals with clean visual hierarchy.
+            </span>
+          </article>
+          <article class="project-card" data-category="ai">
+            <p>AI</p>
+            <h3>AI Workflow Assistant</h3>
+            <span>
+              Prototype assistant concept for summarizing documents, routing tasks,
+              and helping teams move faster.
+            </span>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer section" id="contact">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <strong>Charles <span>Zone</span></strong>
+            <p>用产品思维创造美好体验</p>
+          </div>
+          <div class="footer__connect">
+            <div class="social-row" aria-label="Social links">
+              <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.68c-2.78.6-3.37-1.18-3.37-1.18a2.65 2.65 0 0 0-1.11-1.46c-.91-.62.07-.61.07-.61a2.1 2.1 0 0 1 1.53 1.03 2.13 2.13 0 0 0 2.91.83 2.12 2.12 0 0 1 .63-1.34c-2.22-.25-4.56-1.11-4.56-4.95a3.87 3.87 0 0 1 1.03-2.69 3.6 3.6 0 0 1 .1-2.65s.84-.27 2.75 1.03A9.46 9.46 0 0 1 12 6a9.46 9.46 0 0 1 2.5.34c1.91-1.3 2.75-1.03 2.75-1.03.37.86.4 1.82.1 2.65a3.87 3.87 0 0 1 1.03 2.69c0 3.85-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6.94 8.98H3.7V20h3.24V8.98ZM5.32 4a1.88 1.88 0 1 0 0 3.76 1.88 1.88 0 0 0 0-3.76Zm7.05 4.98H9.26V20h3.24v-5.45c0-1.44.27-2.83 2.05-2.83 1.76 0 1.78 1.64 1.78 2.92V20h3.24v-6.04c0-2.96-.64-5.24-4.1-5.24a3.59 3.59 0 0 0-3.23 1.78h-.04l.17-1.52Z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7.15A4.85 4.85 0 1 1 12 16.85 4.85 4.85 0 0 1 12 7.15Zm0 2A2.85 2.85 0 1 0 12 14.85 2.85 2.85 0 0 0 12 9.15Zm5.05-2.45a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3Z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>2026 Charles Ji. All rights reserved.</p>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
