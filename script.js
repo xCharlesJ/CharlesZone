@@ -8,6 +8,7 @@ const nav = document.querySelector(".nav");
 const liquid = document.querySelector(".nav__liquid");
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
+const cursorDot = document.querySelector("[data-cursor-dot]");
 
 const roles = ["AI Product Manager"];
 let roleIndex = 0;
@@ -44,6 +45,49 @@ function tickTypewriter() {
 
 tickTypewriter();
 
+const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (cursorDot && finePointer.matches && !reducedMotion.matches) {
+  const cursor = {
+    x: window.innerWidth / 2,
+    y: window.innerHeight / 2
+  };
+
+  function showCursor() {
+    cursorDot.classList.add("is-visible");
+  }
+
+  function moveCursorDot() {
+    cursorDot.style.left = `${cursor.x}px`;
+    cursorDot.style.top = `${cursor.y}px`;
+  }
+
+  window.addEventListener("pointermove", (event) => {
+    cursor.x = event.clientX;
+    cursor.y = event.clientY;
+    showCursor();
+    moveCursorDot();
+  });
+
+  window.addEventListener("pointerdown", (event) => {
+    cursorDot.classList.add("is-pressed");
+    const burst = document.createElement("span");
+    burst.className = "click-burst";
+    burst.style.left = `${event.clientX}px`;
+    burst.style.top = `${event.clientY}px`;
+    document.body.append(burst);
+    burst.addEventListener("animationend", () => burst.remove(), { once: true });
+  });
+
+  window.addEventListener("pointerup", () => cursorDot.classList.remove("is-pressed"));
+  document.documentElement.addEventListener("mouseleave", () => {
+    cursorDot.classList.remove("is-visible");
+  });
+
+  moveCursorDot();
+}
+
 document.querySelectorAll(".timeline-card").forEach((card) => {
   card.addEventListener("pointermove", (event) => {
     const rect = card.getBoundingClientRect();
@@ -61,6 +105,17 @@ document.querySelectorAll("[data-filter]").forEach((button) => {
     document.querySelectorAll("[data-category]").forEach((card) => {
       card.classList.toggle("is-hidden", filter !== "all" && card.dataset.category !== filter);
     });
+  });
+});
+
+document.querySelectorAll("[data-contact-toggle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    const details = document.getElementById(button.dataset.contactToggle);
+    if (!details) return;
+
+    const willShow = details.hasAttribute("hidden");
+    details.toggleAttribute("hidden", !willShow);
+    button.setAttribute("aria-expanded", String(willShow));
   });
 });
 

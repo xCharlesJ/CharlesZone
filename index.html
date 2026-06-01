@@ -58,6 +58,7 @@
     </script>
 
     <canvas class="constellation" data-constellation aria-hidden="true"></canvas>
+    <div class="cursor-dot" data-cursor-dot aria-hidden="true"></div>
 
     <header class="site-header">
       <a class="brand" href="#home" aria-label="Charles Ji home">
@@ -74,7 +75,6 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#experience">Work</a>
-        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -86,12 +86,12 @@
           <h1>Charles Ji</h1>
           <h2><span data-typewriter>AI Product Manager</span><span class="caret">█</span></h2>
           <p>
-            I build thoughtful software systems, clean interfaces, and reliable
-            automation. This site is ready for your real resume details, projects,
-            links, and downloadable CV.
+            用 AI 技术解决真实问题，用建筑级思维打造可靠、易用的产品 | Use AI
+            technology to solve real problems, and build reliable, easy-to-use
+            products with architectural-level thinking.
           </p>
           <div class="hero__actions">
-            <a class="button button--primary" href="#projects">View work</a>
+            <a class="button button--primary" href="#experience">View work</a>
             <a class="button button--ghost" href="#contact">Contact</a>
           </div>
         </div>
@@ -100,121 +100,267 @@
         </figure>
       </section>
 
-      <section class="section section--split" id="about">
-        <div>
+      <section class="section about-section" id="about">
+        <div class="section__intro">
           <p class="eyebrow">About</p>
           <h2>About Me</h2>
+          <p>Get to know the person behind the product thinking.</p>
         </div>
-        <div class="glass-panel">
-          <p>
-            Hi, I'm Charles Ji. I enjoy turning ambiguous ideas into practical
-            products, with a focus on full-stack engineering, data-driven tools,
-            and polished user experiences.
-          </p>
-          <p>
-            Replace this paragraph with your strongest personal summary: your
-            current role, technical focus, years of experience, location, and what
-            opportunities you want people to contact you about.
-          </p>
-          <div class="link-row" aria-label="Profile links">
-            <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="#" aria-disabled="true">Resume</a>
+
+        <div class="about-layout">
+          <div class="about-profile">
+            <div class="about-copy">
+              <p>
+                I'm Charles Ji, an AI Product Manager focused on turning ambiguous
+                problems into useful, reliable product experiences. I care about
+                practical AI: workflows that reduce friction, interfaces people can
+                understand, and systems that hold up beyond a prototype demo.
+              </p>
+              <p>
+                My background in architecture shaped how I think about products:
+                structure first, experience always, and every detail connected to
+                how people actually move through a space or a workflow. I bring
+                that architectural-level thinking into AI products, from problem
+                framing and requirement design to delivery and iteration.
+              </p>
+              <p>
+                I'm especially interested in AI assistants, automation tools,
+                knowledge workflows, and products that make complex tasks feel
+                clear, trustworthy, and easy to use.
+              </p>
+            </div>
+
+            <div class="about-highlights" aria-label="Profile highlights">
+              <div class="about-highlight">
+                <span>AI</span>
+                <strong>AI Product Strategy</strong>
+              </div>
+              <div class="about-highlight">
+                <span>UX</span>
+                <strong>Human-Centered Workflows</strong>
+              </div>
+              <div class="about-highlight">
+                <span>AR</span>
+                <strong>Architecture Background</strong>
+              </div>
+              <div class="about-highlight">
+                <span>PM</span>
+                <strong>Problem to Product Delivery</strong>
+              </div>
+            </div>
+
+            <div class="about-meta" aria-label="Profile links">
+              <a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="#" aria-disabled="true">Resume</a>
+            </div>
+          </div>
+
+          <div class="about-credentials">
+            <div class="about-block">
+              <h3><span>01</span> Experience</h3>
+              <article class="credential-card">
+                <div>
+                  <h4>AI Product Manager</h4>
+                  <p>Charles Zone</p>
+                </div>
+                <time>2024 - Present</time>
+                <p>
+                  Define AI product direction, translate real user problems into
+                  workflows, and shape prototypes into reliable product experiences.
+                </p>
+                <div class="tag-row">
+                  <span>AI Strategy</span>
+                  <span>PRD</span>
+                  <span>Automation</span>
+                  <span>UX</span>
+                </div>
+              </article>
+              <article class="credential-card">
+                <div>
+                  <h4>Architecture / Product Design</h4>
+                  <p>Spatial systems and user experience</p>
+                </div>
+                <time>2020 - 2024</time>
+                <p>
+                  Built a strong foundation in systems thinking, interaction flow,
+                  visual hierarchy, and designing for real human behavior.
+                </p>
+                <div class="tag-row">
+                  <span>Systems</span>
+                  <span>Research</span>
+                  <span>Design</span>
+                </div>
+              </article>
+            </div>
+
+            <div class="about-block">
+              <h3><span>02</span> Education & Focus</h3>
+              <article class="credential-card credential-card--compact">
+                <div>
+                  <h4>AI Product Management</h4>
+                  <p>Product strategy, AI workflows, and delivery</p>
+                </div>
+                <time>Now</time>
+              </article>
+              <article class="credential-card credential-card--compact">
+                <div>
+                  <h4>Architecture</h4>
+                  <p>Structure, spatial thinking, and human experience</p>
+                </div>
+                <time>Foundation</time>
+              </article>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="section" id="experience">
-        <p class="eyebrow">Experience</p>
-        <h2>Selected Work</h2>
-        <p class="section__subtitle">Every step is part of the product journey.</p>
-        <div class="timeline">
-          <article class="timeline-item reveal">
-            <div class="timeline-item__node" aria-hidden="true"></div>
-            <div class="timeline-card">
-              <div class="timeline-card__header">
-                <div>
-                  <h3>AI Product Manager</h3>
-                  <p class="timeline-card__org">
-                    <span class="org-mark">CJ</span>
-                    Company Name | City, Country
-                  </p>
-                </div>
-                <span class="timeline-card__date">2024 - Present</span>
+        <p class="eyebrow">Selected Work</p>
+        <h2 class="work-title">Products, workflows and systems I've shaped.</h2>
+        <div class="work-grid">
+          <article class="work-card reveal">
+            <div class="work-card__media work-card__media--assistant">
+              <span class="work-card__label">AI Product</span>
+              <div class="work-card__actions" aria-hidden="true">
+                <span>GH</span>
+                <span>UP</span>
               </div>
-              <ul>
-                <li>Define AI product strategy, roadmap priorities, and release plans.</li>
-                <li>Translate user needs into practical workflows, prototypes, and launch specs.</li>
-                <li>Coordinate design, engineering, and stakeholders across the product lifecycle.</li>
-              </ul>
+            </div>
+            <div class="work-card__body">
+              <h3>AI Workflow Assistant</h3>
+              <p>
+                A practical assistant concept for summarizing documents, routing
+                tasks, and helping teams move from scattered context to clear action.
+              </p>
+              <div class="work-tags">
+                <span>LLM</span>
+                <span>Automation</span>
+                <span>UX</span>
+                <span>PRD</span>
+              </div>
             </div>
           </article>
 
-          <article class="timeline-item reveal">
-            <div class="timeline-item__node" aria-hidden="true"></div>
-            <div class="timeline-card">
-              <div class="timeline-card__header">
-                <div>
-                  <h3>Architecture / Product Design</h3>
-                  <p class="timeline-card__org">
-                    <span class="org-mark">SC</span>
-                    Organization Name | Remote
-                  </p>
-                </div>
-                <span class="timeline-card__date">2020 - 2024</span>
+          <article class="work-card reveal">
+            <div class="work-card__media work-card__media--dashboard">
+              <span class="work-card__label">Data Product</span>
+              <div class="work-card__actions" aria-hidden="true">
+                <span>GH</span>
+                <span>UP</span>
               </div>
-              <ul>
-                <li>Built strong spatial thinking, system design, and user experience judgment.</li>
-                <li>Created product concepts, visual prototypes, and structured requirement documents.</li>
-                <li>Developed cross-disciplinary problem-solving skills for complex product decisions.</li>
-              </ul>
+            </div>
+            <div class="work-card__body">
+              <h3>Analytics Decision Dashboard</h3>
+              <p>
+                A metrics workspace for tracking product signals, comparing trends,
+                and turning noisy operating data into better prioritization.
+              </p>
+              <div class="work-tags">
+                <span>Dashboard</span>
+                <span>Metrics</span>
+                <span>Insights</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card reveal">
+            <div class="work-card__media work-card__media--portfolio">
+              <span class="work-card__label">Portfolio</span>
+              <div class="work-card__actions" aria-hidden="true">
+                <span>GH</span>
+                <span>UP</span>
+              </div>
+            </div>
+            <div class="work-card__body">
+              <h3>Charles Zone Resume Site</h3>
+              <p>
+                A dark interactive portfolio system that presents product thinking,
+                AI focus, resume details, and contact paths in one polished flow.
+              </p>
+              <div class="work-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <div class="section__heading-row">
-          <div>
-            <p class="eyebrow">Projects</p>
-            <h2>Things I've Built</h2>
-          </div>
-          <div class="filter-bar" aria-label="Project filters">
-            <button class="is-active" type="button" data-filter="all">All</button>
-            <button type="button" data-filter="web">Web</button>
-            <button type="button" data-filter="data">Data</button>
-            <button type="button" data-filter="ai">AI</button>
+      <section class="section contact-section" id="contact">
+        <div class="contact-copy">
+          <p class="contact-kicker"><span aria-hidden="true">>>></span> Stay Connected</p>
+          <h2>Let's Work Together!</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <button class="contact-item__icon" type="button" data-contact-toggle="phone-info" aria-expanded="false" aria-controls="phone-info" aria-label="Show phone number">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.31-.31.76-.41 1.16-.27 1.28.42 2.61.63 3.93.63.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.85 21 3 13.15 3 3.5c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.32.21 2.65.63 3.93.14.4.04.85-.27 1.16l-2.24 2.2Z" />
+                </svg>
+              </button>
+              <span class="contact-item__details" id="phone-info" hidden>
+                <small>Phone</small>
+                <strong><a href="tel:+8613800000000">+86 138 0000 0000</a></strong>
+              </span>
+            </div>
+            <div class="contact-item">
+              <button class="contact-item__icon" type="button" data-contact-toggle="email-info" aria-expanded="false" aria-controls="email-info" aria-label="Show email address">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2Zm8 7.25L4.3 7.4 4 7.58V17h16V7.58l-.3-.18L12 12.25Zm0-2.1L18.7 7H5.3L12 10.15Z" />
+                </svg>
+              </button>
+              <span class="contact-item__details" id="email-info" hidden>
+                <small>Email</small>
+                <strong><a href="mailto:charles@example.com">charles@example.com</a></strong>
+              </span>
+            </div>
+            <div class="contact-item">
+              <button class="contact-item__icon" type="button" data-contact-toggle="location-info" aria-expanded="false" aria-controls="location-info" aria-label="Show location">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z" />
+                </svg>
+              </button>
+              <span class="contact-item__details" id="location-info" hidden>
+                <small>Location</small>
+                <strong>Shanghai, China</strong>
+              </span>
+            </div>
           </div>
         </div>
-        <div class="project-grid">
-          <article class="project-card" data-category="web">
-            <p>Web</p>
-            <h3>Personal Resume Site</h3>
-            <span>
-              A dark, interactive portfolio inspired by modern engineer websites,
-              rebuilt for Charles Ji with editable resume sections.
-            </span>
-          </article>
-          <article class="project-card" data-category="data">
-            <p>Data</p>
-            <h3>Analytics Dashboard</h3>
-            <span>
-              Dashboard template for tracking metrics, trends, and operational
-              signals with clean visual hierarchy.
-            </span>
-          </article>
-          <article class="project-card" data-category="ai">
-            <p>AI</p>
-            <h3>AI Workflow Assistant</h3>
-            <span>
-              Prototype assistant concept for summarizing documents, routing tasks,
-              and helping teams move faster.
-            </span>
-          </article>
-        </div>
+
+        <form class="contact-form" action="mailto:charles@example.com" method="post" enctype="text/plain">
+          <label>
+            <span>Full Name</span>
+            <input type="text" name="name" placeholder="Full Name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Email Address</span>
+            <input type="email" name="email" placeholder="Email Address" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Phone Number</span>
+            <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" />
+          </label>
+          <label>
+            <span>Choose Service</span>
+            <select name="service" required>
+              <option value="">Choose Service</option>
+              <option>AI Product Strategy</option>
+              <option>Workflow Automation</option>
+              <option>Product Discovery</option>
+              <option>Portfolio / Resume Website</option>
+            </select>
+          </label>
+          <label class="contact-form__message">
+            <span>Write Your Message</span>
+            <textarea name="message" placeholder="Write Your Message" required></textarea>
+          </label>
+          <button class="button button--primary contact-form__submit" type="submit">Send Message</button>
+        </form>
       </section>
 
-      <footer class="footer section" id="contact">
+      <footer class="footer section">
         <div class="footer__top">
           <div class="footer__brand">
             <strong>Charles <span>Zone</span></strong>
