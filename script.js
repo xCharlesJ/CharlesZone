@@ -6,6 +6,8 @@ const canvas = document.querySelector("[data-constellation]");
 const ctx = canvas.getContext("2d");
 const nav = document.querySelector(".nav");
 const liquid = document.querySelector(".nav__liquid");
+const header = document.querySelector(".site-header");
+const navToggle = document.querySelector(".nav-toggle");
 
 const roles = ["AI Product Manager"];
 let roleIndex = 0;
@@ -92,6 +94,28 @@ navLinks.forEach((link) => {
     moveLiquidTo(activeNavLink());
   });
   link.addEventListener("focus", () => moveLiquidTo(link));
+  link.addEventListener("click", () => {
+    header?.classList.remove("is-menu-open");
+    navToggle?.setAttribute("aria-expanded", "false");
+  });
+});
+
+navToggle?.addEventListener("click", () => {
+  const isOpen = header?.classList.toggle("is-menu-open") || false;
+  navToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  header?.classList.remove("is-menu-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+});
+
+document.addEventListener("click", (event) => {
+  if (!header?.classList.contains("is-menu-open")) return;
+  if (header.contains(event.target)) return;
+  header.classList.remove("is-menu-open");
+  navToggle?.setAttribute("aria-expanded", "false");
 });
 
 const observer = new IntersectionObserver(
