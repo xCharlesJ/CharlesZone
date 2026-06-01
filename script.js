@@ -9,6 +9,9 @@ const liquid = document.querySelector(".nav__liquid");
 const header = document.querySelector(".site-header");
 const navToggle = document.querySelector(".nav-toggle");
 const cursorDot = document.querySelector("[data-cursor-dot]");
+const themeDock = document.querySelector("[data-theme-dock]");
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeChoices = [...document.querySelectorAll("[data-theme-choice]")];
 
 const roles = ["AI Product Manager"];
 let roleIndex = 0;
@@ -44,6 +47,46 @@ function tickTypewriter() {
 }
 
 tickTypewriter();
+
+function setTheme(theme) {
+  const nextTheme = theme === "light" ? "light" : "dark";
+  if (nextTheme === "light") {
+    document.documentElement.dataset.theme = "light";
+  } else {
+    delete document.documentElement.dataset.theme;
+  }
+  themeChoices.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.themeChoice === nextTheme));
+  });
+
+  try {
+    window.localStorage.setItem("charles-theme", nextTheme);
+  } catch (error) {
+    // Ignore storage failures in private browsing or locked-down environments.
+  }
+}
+
+setTheme(document.documentElement.dataset.theme === "light" ? "light" : "dark");
+
+themeToggle?.addEventListener("click", () => {
+  const isOpen = themeDock?.classList.toggle("is-open") || false;
+  themeToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+themeChoices.forEach((button) => {
+  button.addEventListener("click", () => {
+    setTheme(button.dataset.themeChoice);
+    themeDock?.classList.remove("is-open");
+    themeToggle?.setAttribute("aria-expanded", "false");
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!themeDock?.classList.contains("is-open")) return;
+  if (themeDock.contains(event.target)) return;
+  themeDock.classList.remove("is-open");
+  themeToggle?.setAttribute("aria-expanded", "false");
+});
 
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
