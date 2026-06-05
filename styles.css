@@ -83,12 +83,16 @@ button {
 }
 
 .cursor-dot,
-.click-burst {
+.click-spark {
   position: fixed;
   left: 0;
   top: 0;
   z-index: 80;
   pointer-events: none;
+}
+
+.click-spark {
+  inset: 0;
 }
 
 .cursor-dot {
@@ -110,18 +114,6 @@ button {
 
 .cursor-dot.is-pressed {
   transform: translate3d(-50%, -50%, 0) scale(0.72);
-}
-
-.click-burst {
-  width: 0.8rem;
-  height: 0.8rem;
-  border: 1px solid rgba(255, 200, 87, 0.92);
-  border-radius: 999px;
-  box-shadow:
-    0 0 18px rgba(255, 200, 87, 0.45),
-    0 0 34px rgba(61, 214, 207, 0.22);
-  transform: translate3d(-50%, -50%, 0) scale(0.45);
-  animation: click-burst 0.58s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .theme-dock {
@@ -245,7 +237,7 @@ button {
   left: 50%;
   z-index: 20;
   display: flex;
-  width: min(94vw, 960px);
+  width: min(82vw, 900px);
   align-items: center;
   justify-content: space-between;
   padding: 0.55rem;
@@ -262,6 +254,38 @@ button {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   transform: translateX(-50%);
   overflow: hidden;
+  transition:
+    top 0.32s ease,
+    width 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+    padding 0.32s ease,
+    border-radius 0.32s ease,
+    border-color 0.32s ease,
+    background 0.32s ease,
+    box-shadow 0.32s ease;
+}
+
+.site-header.is-at-top {
+  top: 1.25rem;
+  width: min(96vw, 1180px);
+  border-color: transparent;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.site-header.is-at-top::before,
+.site-header.is-at-top::after {
+  opacity: 0;
+}
+
+.site-header.is-at-top .nav__liquid {
+  opacity: 0;
+}
+
+.site-header.is-scrolled {
+  top: 0.75rem;
 }
 
 .site-header::before {
@@ -322,17 +346,30 @@ button {
 .brand-name {
   margin-left: 0.55rem;
   margin-right: auto;
-  background: linear-gradient(90deg, #5e7cff, #c85fff);
+  background: linear-gradient(110deg, #5e7cff 0%, #c85fff 28%, #3dd6cf 52%, #ffc857 72%, #c85fff 100%);
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-size: 0.96rem;
   font-weight: 800;
   white-space: nowrap;
+  animation: brand-flow 11.2s linear infinite;
+  filter: drop-shadow(0 0 0.6rem rgba(94, 124, 255, 0.26));
 }
 
 .brand-name span {
   color: inherit;
+}
+
+@keyframes brand-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 260% 50%;
+  }
 }
 
 .nav {
@@ -548,7 +585,12 @@ h2 {
   aspect-ratio: 1;
   border: 1px solid var(--line);
   border-radius: 8px;
-  object-fit: cover;
+  object-fit: contain;
+  box-shadow: var(--shadow);
+}
+
+:root[data-theme="light"] .hero__visual img {
+  border-color: rgba(16, 24, 39, 0.12);
   box-shadow: var(--shadow);
 }
 
@@ -1461,6 +1503,14 @@ h2 {
     radial-gradient(circle at 78% 115%, rgba(61, 214, 207, 0.14), transparent 34%);
 }
 
+:root[data-theme="light"] .site-header.is-at-top {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
 :root[data-theme="light"] .brand,
 :root[data-theme="light"] .button--primary,
 :root[data-theme="light"] .filter-bar button.is-active {
@@ -1610,11 +1660,14 @@ h2 {
 .footer__brand strong {
   display: block;
   margin-bottom: 0.9rem;
-  background: linear-gradient(90deg, #5e7cff, #c85fff);
+  background: linear-gradient(110deg, #5e7cff 0%, #c85fff 28%, #3dd6cf 52%, #ffc857 72%, #c85fff 100%);
+  background-size: 260% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   font-size: 1.35rem;
+  animation: brand-flow 11.2s linear infinite;
+  filter: drop-shadow(0 0 0.7rem rgba(94, 124, 255, 0.22));
 }
 
 .footer__brand strong span {
@@ -1692,13 +1745,6 @@ h2 {
   }
 }
 
-@keyframes click-burst {
-  100% {
-    opacity: 0;
-    transform: translate3d(-50%, -50%, 0) scale(5.2);
-  }
-}
-
 @keyframes contact-reveal {
   0% {
     opacity: 0;
@@ -1713,8 +1759,14 @@ h2 {
 
 @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
   .cursor-dot,
-  .click-burst {
+  .click-spark {
     display: none;
+  }
+
+  .brand-name,
+  .footer__brand strong {
+    animation: none;
+    background-position: 50% 50%;
   }
 }
 
